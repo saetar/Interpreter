@@ -1,8 +1,14 @@
-interpter-input.1.txt and interpreter-input.2.txt are used for testing quote.
+Interpreter for Racket code made in C. 
 
-input.3 tests define at the outermost level.
-input.4 tests define, lambda, and quote
-input.5 tests preliminary primitives like car, cdr, +, and null?
-input.6 tests let*, set!, begin, cond, etc.
-input.7 tests later primitives like *, -, modulo, and /.
-input.8 tests >, <, =, and recursive functions. 
+It is split up into 3 different sections:
+  1) Tokenizer (tokenizer.c)
+  2) Parser (parser.c)
+  3) Interpreter (interpreter.c)
+
+Takes in a name of a Racket text file as command-line argument and prints results out to stdout. 
+
+talloc.c makes a "tracked allocation" of memory so I don't have to worry about freeing things at the end of execution.
+value.h provides a struct for keeping track of our tokens after tokenization. 
+linkedlist.h proviedes a struct for a linkedlist of values as one might imagine.
+
+Unfortunately, I was not able to finish a REPL (Read evaluate print loop) so that we could interpret on the fly in the command-line. (repl.c)
